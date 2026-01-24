@@ -1,11 +1,25 @@
+/**********************************************************************************************************************
+* Program...........: Simple Checkout
+* Programmers.......: Ben Stearns, Taylor Rath
+* Date..............: 1-24-26
+* GitHub Repo.......: https://github.com/tarath01/CH1_2Assignment
+* Description.......: The purpose of this program is to:
+*                       - Take user input for a grocery checkout scenario
+*                       - Validate the user input
+*                        - Calculate totals, tax, and change due
+*                        - Display a receipt to the user as an alert
+* File Description..: defines the JavaScript code for validating user input and generating a receipt
+***********************************************************************************************************************/
+ 
+// use a directive to enforce strict mode. 
+// Prevents certain actions and throws more exceptions to prevent sloppy/bad code
 "use strict";
 
 // define a function that gets an HTML element
 function getElement(selector) { 
     return document.querySelector(selector);
 }
-parseFloat()
-parseInt()
+
 // define a function that handles the click event of the Join button
 function joinButtonClick(event) {
     // get user entries from text boxes
@@ -17,6 +31,8 @@ function joinButtonClick(event) {
     
     // check user entries
     let invalid = false;
+
+    //validate name field
     if (name == "") {
         getElement("#name_error").textContent = "Name is required.";
         invalid = true;
@@ -24,38 +40,62 @@ function joinButtonClick(event) {
         getElement("#name_error").textContent = "";
     }
 
+    //validate grocery item field
     if (item == "") {
-        getElement("#grocery_error").textContent = "Emails must match.";
+        getElement("#grocery_error").textContent = "Grocery item is required.";
         invalid = true;
     } else { 
         getElement("#grocery_error").textContent = "";
     }
 
-    if (price == NaN){
-        getElement("#unit_error").textContent = "Please enter a valid price.";
+    //validate unit price field
+    if (getElement("#unit_price").value == ""){
+        getElement("#unit_error").textContent = "Unit price is required.";
         invalid = true;
     } else {
-        getElement("#unit_error").textContent = "";
+        if (Number.isNaN(price)){
+            getElement("#unit_error").textContent = "Please enter a valid price.";
+            invalid = true;
+        } else {
+            getElement("#unit_error").textContent = "";
+        }
     }
 
-    if (quantity == NaN){
-        getElement("#quantity_error").textContent = "Please enter a valid quantity (whole number).";
+    //validate quantity field
+    if (getElement("#quantity").value == ""){
+        getElement("#quantity_error").textContent = "Quantity is required.";
         invalid = true;
-    } else {
-        getElement("#quantity_error").textContent = "";
+    }
+    else{
+        if (!Number.isInteger(quantity)){
+            getElement("#quantity_error").textContent = "Must be a whole number.";
+            invalid = true;
+        } else {
+            getElement("#quantity_error").textContent = "";
+        }
     }
 
-    if (cash == NaN){
-        getElement("#cash_error").textContent = "Please enter a valid quantity (whole number).";
+    //validate cash field
+    if (getElement("#cash").value == ""){
+        getElement("#cash_error").textContent = "Cash amount is required.";
         invalid = true;
-    } else {
-        getElement("#cash_error").textContent = "";
+    } 
+    else {
+        if (Number.isNaN(cash)){
+            getElement("#cash_error").textContent = "Please enter a valid amount.";
+            invalid = true;
+        } 
+        else {
+            getElement("#cash_error").textContent = "";
+        }
     }
 
     // cancel form submit if any user entries are invalid
     if (invalid) {
         event.preventDefault(); 
     }
+
+    // otherwise, perform needed calculations, generate the receipt, and display as an alert
     else{
         let msg =
             `==========Receipt==========\n

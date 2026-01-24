@@ -10,7 +10,9 @@
 
 Welcome to the Simple Checkout App!
 --------------------------------
-
+A grocery checkout app doesn't get more simpler than this. Wanna see what a little Javascript can do for your site then give this a try!<br>
+<br>
+The purpose of this program is to simulate a simple grocery check out as a web application. Just fill out the fields, click "Display Receipt", and watch the magic! 
 
 # <u>*Screenshots*</u>
 
@@ -21,7 +23,7 @@ Welcome to the Simple Checkout App!
 ```
 
 # <u>*Maintainers*</u>
-[@JayW259](https://github.com/JayW259) Javion Wilkins <br>
+[@Tarath01](https://github.com/tarath01) Taylor Rath <br>
 [@bstearns07](https://github.com/bstearns07) Ben Stearns
 
-[Back to Top](#math-tutor-v6)
+[Back to Top](#simple-checkout)

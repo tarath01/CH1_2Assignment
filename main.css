@@ -1,3 +1,16 @@
+/**********************************************************************************************************************
+* Program...........: Simple Checkout
+* Programmers.......: Ben Stearns, Taylor Rath
+* Date..............: 1-24-26
+* GitHub Repo.......: https://github.com/tarath01/CH1_2Assignment
+* Description.......: The purpose of this program is to:
+*                       - Take user input for a grocery checkout scenario
+*                       - Validate the user input
+*                        - Calculate totals, tax, and change due
+*                        - Display a receipt to the user as an alert
+* File Description...: defines the CSS styles for the Simple Checkout application
+***********************************************************************************************************************/
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 1em auto;
