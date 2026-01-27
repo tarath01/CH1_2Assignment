@@ -1,50 +1,66 @@
+
+<!--
+/**********************************************************************************************************************
+* Program...........: Simple Checkout
+* Programmers.......: Ben Stearns, Taylor Rath
+* Date..............: 1-24-26
+* GitHub Repo.......: https://github.com/tarath01/CH1_2Assignment
+* Description.......: The purpose of this program is to:
+*                       - Take user input for a grocery checkout scenario
+*                       - Validate the user input
+*                        - Calculate totals, tax, and change due
+*                        - Display a receipt to the user as an alert
+* File Description..: defines the HTML interface for the application
+***********************************************************************************************************************/ 
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Email List</title>
+    <title>Grocery Receipt</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>Grocery Receipt</h1>
-    <form id="email_form" name="email_form" 
-            action="add.html" method="post">
-        <div>
-            <label for="customer_name">Customer Name:</label>
-            <input type="text" id="customer_name" name="customer_name">
-            <span id="name_error">*</span>
-        </div>
-        
-        <div>
-            <label for="grocery_item">Grocery Item:</label>
-            <input type="text" id="grocery_item" name="grocery_item">
-            <span id="grocery_error">*</span>
-        </div>
+<h1>Grocery Receipt</h1>
+<form id="email_form" name="email_form"
+      action="add.html" method="post">
+    <div>
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name">
+        <span id="name_error">*</span>
+    </div>
 
-        <div>
-            <label for="unit_price">Unit Price:</label>
-            <input type="text" id="unit_price" name="unit_price">
-            <span id="unit_error">*</span>
-        </div>
+    <div>
+        <label for="grocery_item">Grocery Item:</label>
+        <input type="text" id="grocery_item" name="grocery_item">
+        <span id="grocery_error">*</span>
+    </div>
 
-        <div>
-            <label for="quantity_">Quantity:</label>
-            <input type="text" id="quantity_" name="quantity_">
-            <span id="quantity_error">*</span>
-        </div>
+    <div>
+        <label for="unit_price">Unit Price:</label>
+        <input type="text" id="unit_price" name="unit_price">
+        <span id="unit_error">*</span>
+    </div>
 
-        <div>
-            <label for="cash_">Cash:</label>
-            <input type="text" id="cash_" name="cash_">
-            <span id="cash_error">*</span>
-        </div>
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity">
+        <span id="quantity_error">*</span>
+    </div>
 
-        <div>
-            <label>&nbsp;</label>
-            <input type="submit" id="join_button" value="Display Receipt">
-        </div>
-    </form>
-    <script src="email_list.js"></script>
+    <div>
+        <label for="cash">Cash:</label>
+        <input type="text" id="cash" name="cash">
+        <span id="cash_error">*</span>
+    </div>
+
+    <div>
+        <label>&nbsp;</label>
+        <input type="submit" id="join_button" value="Display Receipt">
+    </div>
+</form>
+<script src="email_list.js"></script>
 </body>
 </html>
