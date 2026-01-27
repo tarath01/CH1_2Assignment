@@ -21,13 +21,17 @@ function getElement(selector) {
 }
 
 // define a function that handles the click event of the Join button
-function joinButtonClick(event) {
+function calculateButtonClick(event) {
+    event.preventDefault();
     // get user entries from text boxes
     const name = getElement("#customer_name").value;
     const item = getElement("#grocery_item").value;
     const price = parseFloat(getElement("#unit_price").value);
     const quantity = parseInt(getElement("#quantity").value);
     const cash = parseFloat(getElement("#cash").value);
+    const DISCOUNT_RATE = 0.10;
+    const TAX_RATE = 0.0825;
+    const money = (n) => n.toFixed(2);
 
     // check user entries
     let invalid = false;
@@ -85,6 +89,10 @@ function joinButtonClick(event) {
             getElement("#cash_error").textContent = "Please enter a valid amount.";
             invalid = true;
         }
+        else if(cash < 0){
+            getElement("#cash_error").textContent = "Must be greater than 0.";
+            invalid = true;
+        }
         else {
             getElement("#cash_error").textContent = "";
         }
@@ -97,19 +105,36 @@ function joinButtonClick(event) {
 
     // otherwise, perform needed calculations, generate the receipt, and display as an alert
     else{
+        let subtotal = price * quantity;
+        let discount = (subtotal >=50) ? subtotal * DISCOUNT_RATE : 0;
+        let taxable = subtotal - discount;
+        let tab = TAX_RATE * taxable;
+        let total = taxable + tab;
+        let change = cash - total;
+
         let msg =
-            `==========Receipt==========\n
-            Customer: ${name}\n
-            Item: ${item}\n
-            Unit Price: ${price}\n
-            Quantity: ${quantity}\n
-            -------------\n
-        `
+            `==========Receipt==========
+            Customer: ${name}
+            Item: ${item}
+            Unit Price: $${money(price)}
+            Quantity: ${quantity}
+            -------------
+            Subtotal: $${money(subtotal)}
+            Discount: -$${money(discount)}
+            Tax: $${money(tab)}
+            Total: $${money(total)}
+            -------------
+            Cash: $${money(cash)}
+            Change: $${money(change)}
+           =========End of Receipt======`
+
+        alert(msg);
+        event.preventDefault();
     }
-};
+}
 
 // add code that's run when the web page is loaded
 document.addEventListener("DOMContentLoaded", () => {
     // specify the function that's run when the Join button is clicked
-    getElement("#join_button").addEventListener("click", joinButtonClick);
+    getElement("#cash_button").addEventListener("click", calculateButtonClick);
 });

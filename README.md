@@ -3,24 +3,23 @@
 <b>Table of Contents</b>
 - [Summary](#summary)
 - [Screenshots](#screenshots)
-    - [Screenshot 1](#screenshot-1)
+    - [Opening Form](#opening-form)
 - [Maintainers](#maintainers)
 
 # <u>*Summary*</u>
 
 Welcome to the Simple Checkout App!
 --------------------------------
-A grocery checkout app doesn't get more simpler than this. Wanna see what a little Javascript can do for your site then give this a try!<br>
+A grocery checkout app doesn't get simpler than this. Wanna see what a little Javascript can do for your site then give this a try!<br>
 <br>
 The purpose of this program is to simulate a simple grocery check out as a web application. Just fill out the fields, click "Display Receipt", and watch the magic! 
 
 # <u>*Screenshots*</u>
 
 
-## Screenshot 1
-```
+## Opening Form
+![Opening Form](assets/ch1-2checkout.png)
 
-```
 
 # <u>*Maintainers*</u>
 [@Tarath01](https://github.com/tarath01) Taylor Rath <br>
