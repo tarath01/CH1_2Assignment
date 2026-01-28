@@ -1,21 +1,20 @@
-
 <!--
 /**********************************************************************************************************************
-* Program...........: Simple Checkout
-* Programmers.......: Ben Stearns, Taylor Rath
-* Date..............: 1-24-26
-* GitHub Repo.......: https://github.com/tarath01/CH1_2Assignment
-* Description.......: The purpose of this program is to:
-*                       - Take user input for a grocery checkout scenario
-*                       - Validate the user input
-*                        - Calculate totals, tax, and change due
-*                        - Display a receipt to the user as an alert
-* File Description..: defines the HTML interface for the application
+* Program............: Simple Checkout
+* Programmers........: Ben Stearns, Taylor Rath
+* Date...............: 1-24-26
+* GitHub Repo........: https://github.com/tarath01/CH1_2Assignment
+* Description........: The purpose of this program is to:
+*                           - Accept user input for a grocery checkout scenario
+*                           - Validate the user's input
+*                           - Calculate totals, tax, and change due
+*                           - Display a receipt to the user as an alert
+* File Description...: defines the HTML interface for the application
 ***********************************************************************************************************************/ 
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,8 +23,7 @@
 </head>
 <body>
 <h1>Grocery Receipt</h1>
-<form id="email_form" name="email_form"
-      method="post">
+<form id="grocery_form" name="grocery_form">
     <div>
         <label for="customer_name">Customer Name:</label>
         <input type="text" id="customer_name" name="customer_name">

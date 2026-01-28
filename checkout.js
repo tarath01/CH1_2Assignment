@@ -1,14 +1,14 @@
 /**********************************************************************************************************************
- * Program...........: Simple Checkout
- * Programmers.......: Ben Stearns, Taylor Rath
- * Date..............: 1-24-26
- * GitHub Repo.......: https://github.com/tarath01/CH1_2Assignment
- * Description.......: The purpose of this program is to:
+ * Program............: Simple Checkout
+ * Programmers........: Ben Stearns, Taylor Rath
+ * Date...............: 1-24-26
+ * GitHub Repo........: https://github.com/tarath01/CH1_2Assignment
+ * Description........: The purpose of this program is to:
  *                       - Take user input for a grocery checkout scenario
  *                       - Validate the user input
  *                        - Calculate totals, tax, and change due
  *                        - Display a receipt to the user as an alert
- * File Description..: defines the JavaScript code for validating user input and generating a receipt
+ * File Description...: defines the JavaScript code for validating user input and generating a receipt
  ***********************************************************************************************************************/
 
 // use a directive to enforce strict mode.
@@ -22,79 +22,92 @@ function getElement(selector) {
 
 // define a function that handles the click event of the Join button
 function calculateButtonClick(event) {
-    event.preventDefault();
-    // get user entries from text boxes
-    const name = getElement("#customer_name").value;
-    const item = getElement("#grocery_item").value;
-    const price = parseFloat(getElement("#unit_price").value);
-    const quantity = parseInt(getElement("#quantity").value);
-    const cash = parseFloat(getElement("#cash").value);
-    const DISCOUNT_RATE = 0.10;
-    const TAX_RATE = 0.0825;
-    const money = (n) => n.toFixed(2);
+    // define function variables
+    const DISCOUNT_RATE = 0.10;                 // discount rate applied if total >= 50
+    const TAX_RATE = 0.0825;                    // for calculating tax to be paid
+    const money = (n) => n.toFixed(2);      // for rounding to 2 decimal places
+    let invalid = false;                       // represents if validation passed
 
-    // check user entries
-    let invalid = false;
+    // retrieve error message fields
+    const customerErr = document.querySelector("#name_error")
+    const itemErr = document.querySelector("#grocery_error")
+    const priceErr = document.querySelector("#unit_error")
+    const quantityErr = document.querySelector("#quantity_error")
+    const cashErr = document.querySelector("#cash_error")
+
+    // get user entries from text boxes
+    const name = getElement("#customer_name").value;       // name of user
+    const item = getElement("#grocery_item").value;        // name of grocery item
+    const price = parseFloat(getElement("#unit_price").value);  // stores item's price
+    const quantity = parseInt(getElement("#quantity").value);   // quantity of grocery item user bought
+    const cash = parseFloat(getElement("#cash").value);         // cash tendered to buy item(s)
+
+    //prevent the form from being submitted to the server
+    event.preventDefault();
+
+    // reset error message elements
+    customerErr.textContent = "*";
+    itemErr.textContent = "*";
+    priceErr.textContent = "*";
+    quantityErr.textContent = "*";
+    cashErr.textContent = "*";
 
     //validate name field
-    if (name == "") {
-        getElement("#name_error").textContent = "Name is required.";
+    if (name === "") {
+        customerErr.textContent = "Name is required.";
         invalid = true;
-    } else {
-        getElement("#name_error").textContent = "";
     }
 
     //validate grocery item field
-    if (item == "") {
-        getElement("#grocery_error").textContent = "Grocery item is required.";
+    if (item === "") {
+        itemErr.textContent = "Grocery item is required.";
         invalid = true;
-    } else {
-        getElement("#grocery_error").textContent = "";
     }
 
     //validate unit price field
-    if (getElement("#unit_price").value == ""){
-        getElement("#unit_error").textContent = "Unit price is required.";
+    if (getElement("#unit_price").value === ""){
+        priceErr.textContent = "Unit price is required.";
         invalid = true;
     } else {
-        if (Number.isNaN(price)){
-            getElement("#unit_error").textContent = "Please enter a valid price.";
+        if (Number.isNaN(price)) {
+            priceErr.textContent = "Please enter a valid price.";
             invalid = true;
-        } else {
-            getElement("#unit_error").textContent = "";
+        }
+        else if(price <= 0){
+            priceErr.textContent = "Must be greater than 0.";
+            invalid = true;
         }
     }
 
     //validate quantity field
-    if (getElement("#quantity").value == ""){
-        getElement("#quantity_error").textContent = "Quantity is required.";
+    if (getElement("#quantity").value === ""){
+        quantityErr.textContent = "Quantity is required.";
         invalid = true;
     }
     else{
         if (!Number.isInteger(quantity)){
-            getElement("#quantity_error").textContent = "Must be a whole number.";
+            quantityErr.textContent = "Must be a whole number.";
             invalid = true;
-        } else {
-            getElement("#quantity_error").textContent = "";
+        }
+        else if(quantity <= 0){
+            quantityErr.textContent = "Must be greater than 0.";
+            invalid = true;
         }
     }
 
     //validate cash field
-    if (getElement("#cash").value == ""){
-        getElement("#cash_error").textContent = "Cash amount is required.";
+    if (getElement("#cash").value === ""){
+        cashErr.textContent = "Cash amount is required.";
         invalid = true;
     }
     else {
         if (Number.isNaN(cash)){
-            getElement("#cash_error").textContent = "Please enter a valid amount.";
+            cashErr.textContent = "Please enter a valid amount.";
             invalid = true;
         }
-        else if(cash < 0){
-            getElement("#cash_error").textContent = "Must be greater than 0.";
+        else if(cash <= 0){
+            cashErr.textContent = "Must be greater than 0.";
             invalid = true;
-        }
-        else {
-            getElement("#cash_error").textContent = "";
         }
     }
 
@@ -102,39 +115,37 @@ function calculateButtonClick(event) {
     if (invalid) {
         event.preventDefault();
     }
-
-    // otherwise, perform needed calculations, generate the receipt, and display as an alert
+    // otherwise, perform needed calculations, generate the receipt, and display receipt as an alert
     else{
-        let subtotal = price * quantity;
-        let discount = (subtotal >=50) ? subtotal * DISCOUNT_RATE : 0;
-        let taxable = subtotal - discount;
-        let tab = TAX_RATE * taxable;
-        let total = taxable + tab;
-        let change = cash - total;
+        const subtotal = price * quantity;
+        const discount = (subtotal >=50) ? subtotal * DISCOUNT_RATE : 0;
+        const taxable = subtotal - discount;
+        const tab = TAX_RATE * taxable;
+        const total = taxable + tab;
+        const change = cash - total;
 
-        let msg =
-            `==========Receipt==========
-            Customer: ${name}
-            Item: ${item}
-            Unit Price: $${money(price)}
-            Quantity: ${quantity}
-            -------------
-            Subtotal: $${money(subtotal)}
-            Discount: -$${money(discount)}
-            Tax: $${money(tab)}
-            Total: $${money(total)}
-            -------------
-            Cash: $${money(cash)}
-            Change: $${money(change)}
-           =========End of Receipt======`
+        const msg =
+        `==========Receipt==========
+        Customer: ${name}
+        Item: ${item}
+        Unit Price: $${money(price)}
+        Quantity: ${quantity}
+        -------------
+        Subtotal: $${money(subtotal)}
+        Discount: -$${money(discount)}
+        Tax: $${money(tab)}
+        Total: $${money(total)}
+        -------------
+        Cash: $${money(cash)}
+        Change: $${money(change)}
+       =========End of Receipt======`
 
         alert(msg);
-        event.preventDefault();
     }
 }
 
 // add code that's run when the web page is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    // specify the function that's run when the Join button is clicked
+    // specify the function that's run when the Display Receipt button is clicked
     getElement("#cash_button").addEventListener("click", calculateButtonClick);
 });
