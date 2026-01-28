@@ -1,14 +1,14 @@
 # Simple Checkout
-
+![Simple Checkout](assets/blank_form.png)
 <b>Table of Contents</b>
 - [Summary](#summary)
 - [Screenshots](#screenshots)
-    - [Valid Form](#valid-form)
-    - [Receipt](#receipt)
-    - [Data Validation](#data-validation)
+  - [Valid Form](#valid-form)
+  - [Receipt](#receipt)
+  - [Data Validation](#data-validation)
 - [Maintainers](#maintainers)
 
-# Summary
+## Summary
 ___
 Welcome to the Simple Checkout App!
 -----------------------------------
@@ -16,22 +16,22 @@ A grocery checkout app doesn't get simpler than this. Wanna see what a little Ja
 <br>
 The purpose of this program is to simulate a simple grocery check out as a web application. Just fill out the fields, click "Display Receipt", and watch the magic! 
 
-# Screenshots
+## Screenshots
 ___
 
-## Valid Form
+### Valid Form
 ![Valid Form](assets/valid_form.png)
 
-## Receipt
+### Receipt
 ![Receipt](assets/receipt1.png)
 ![Receipt](assets/receipt2.png)
 
-## Data Validation
+### Data Validation
 ![Data Validation](assets/required_fields_validation.png)
 ![Data Validation](assets/numeric_validation.png)
 ![Data Validation](assets/greater_than_0_validation.png)
 
-# Maintainers
+## Maintainers
 ___
 [@Tarath01](https://github.com/tarath01) Taylor Rath <br>
 [@bstearns07](https://github.com/bstearns07) Ben Stearns
