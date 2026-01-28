@@ -8,16 +8,16 @@
     - [Data Validation](#data-validation)
 - [Maintainers](#maintainers)
 
-# <u>*Summary*</u>
-
+# Summary
+___
 Welcome to the Simple Checkout App!
---------------------------------
+-----------------------------------
 A grocery checkout app doesn't get simpler than this. Wanna see what a little JavaScript can do for your site then give this a try!<br>
 <br>
 The purpose of this program is to simulate a simple grocery check out as a web application. Just fill out the fields, click "Display Receipt", and watch the magic! 
 
-# <u>*Screenshots*</u>
-
+# Screenshots
+___
 
 ## Valid Form
 ![Valid Form](assets/valid_form.png)
@@ -31,7 +31,8 @@ The purpose of this program is to simulate a simple grocery check out as a web a
 ![Data Validation](assets/numeric_validation.png)
 ![Data Validation](assets/greater_than_0_validation.png)
 
-# <u>*Maintainers*</u>
+# Maintainers
+___
 [@Tarath01](https://github.com/tarath01) Taylor Rath <br>
 [@bstearns07](https://github.com/bstearns07) Ben Stearns
 
