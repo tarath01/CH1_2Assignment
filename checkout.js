@@ -68,15 +68,14 @@ function calculateButtonClick(event) {
     if (getElement("#unit_price").value === ""){
         priceErr.textContent = "Unit price is required.";
         invalid = true;
-    } else {
-        if (Number.isNaN(price)) {
-            priceErr.textContent = "Please enter a valid price.";
-            invalid = true;
-        }
-        else if(price <= 0){
-            priceErr.textContent = "Must be greater than 0.";
-            invalid = true;
-        }
+    }
+    else if (Number.isNaN(price)) {
+        priceErr.textContent = "Please enter a valid price.";
+        invalid = true;
+    }
+    else if(price <= 0){
+        priceErr.textContent = "Must be greater than 0.";
+        invalid = true;
     }
 
     //validate quantity field
@@ -84,15 +83,13 @@ function calculateButtonClick(event) {
         quantityErr.textContent = "Quantity is required.";
         invalid = true;
     }
-    else{
-        if (!Number.isInteger(quantity)){
-            quantityErr.textContent = "Must be a whole number.";
-            invalid = true;
-        }
-        else if(quantity <= 0){
-            quantityErr.textContent = "Must be greater than 0.";
-            invalid = true;
-        }
+    else if (!Number.isInteger(quantity)){
+        quantityErr.textContent = "Must be a whole number.";
+        invalid = true;
+    }
+    else if(quantity <= 0){
+        quantityErr.textContent = "Must be greater than 0.";
+        invalid = true;
     }
 
     //validate cash field
@@ -100,15 +97,13 @@ function calculateButtonClick(event) {
         cashErr.textContent = "Cash amount is required.";
         invalid = true;
     }
-    else {
-        if (Number.isNaN(cash)){
-            cashErr.textContent = "Please enter a valid amount.";
-            invalid = true;
-        }
-        else if(cash <= 0){
-            cashErr.textContent = "Must be greater than 0.";
-            invalid = true;
-        }
+    else if (Number.isNaN(cash)){
+        cashErr.textContent = "Please enter a valid amount.";
+        invalid = true;
+    }
+    else if(cash <= 0){
+        cashErr.textContent = "Must be greater than 0.";
+        invalid = true;
     }
 
     // cancel form submit if any user entries are invalid
@@ -124,8 +119,8 @@ function calculateButtonClick(event) {
         const total = taxable + tab;
         const change = cash - total;
 
-        const msg =
-        `==========Receipt==========
+        const msg = `
+        ==========Receipt==========
         Customer: ${name}
         Item: ${item}
         Unit Price: $${money(price)}
