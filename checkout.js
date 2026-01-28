@@ -26,7 +26,7 @@ function calculateButtonClick(event) {
     const DISCOUNT_RATE = 0.10;                 // discount rate applied if total >= 50
     const TAX_RATE = 0.0825;                    // for calculating tax to be paid
     const money = (n) => n.toFixed(2);      // for rounding to 2 decimal places
-    let invalid = false;                       // represents if validation passed
+    let isValid = true;                        // represents if validation passed
 
     // retrieve error message fields
     const customerErr = document.querySelector("#name_error")
@@ -55,63 +55,59 @@ function calculateButtonClick(event) {
     //validate name field
     if (name === "") {
         customerErr.textContent = "Name is required.";
-        invalid = true;
+        isValid = false;
     }
 
     //validate grocery item field
     if (item === "") {
         itemErr.textContent = "Grocery item is required.";
-        invalid = true;
+        isValid = false;
     }
 
     //validate unit price field
     if (getElement("#unit_price").value === ""){
         priceErr.textContent = "Unit price is required.";
-        invalid = true;
+        isValid = false;
     }
     else if (Number.isNaN(price)) {
         priceErr.textContent = "Please enter a valid price.";
-        invalid = true;
+        isValid = false;
     }
     else if(price <= 0){
         priceErr.textContent = "Must be greater than 0.";
-        invalid = true;
+        isValid = false;
     }
 
     //validate quantity field
     if (getElement("#quantity").value === ""){
         quantityErr.textContent = "Quantity is required.";
-        invalid = true;
+        isValid = false;
     }
     else if (!Number.isInteger(quantity)){
         quantityErr.textContent = "Must be a whole number.";
-        invalid = true;
+        isValid = false;
     }
     else if(quantity <= 0){
         quantityErr.textContent = "Must be greater than 0.";
-        invalid = true;
+        isValid = false;
     }
 
     //validate cash field
     if (getElement("#cash").value === ""){
         cashErr.textContent = "Cash amount is required.";
-        invalid = true;
+        isValid = false;
     }
     else if (Number.isNaN(cash)){
         cashErr.textContent = "Please enter a valid amount.";
-        invalid = true;
+        isValid = false;
     }
     else if(cash <= 0){
         cashErr.textContent = "Must be greater than 0.";
-        invalid = true;
+        isValid = false;
     }
 
-    // cancel form submit if any user entries are invalid
-    if (invalid) {
-        event.preventDefault();
-    }
-    // otherwise, perform needed calculations, generate the receipt, and display receipt as an alert
-    else{
+    // if data if valid, perform needed calculations, generate receipt, and display as an alert
+    if (isValid) {
         const subtotal = price * quantity;
         const discount = (subtotal >=50) ? subtotal * DISCOUNT_RATE : 0;
         const taxable = subtotal - discount;
